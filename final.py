@@ -45,9 +45,6 @@ Streamlit is a powerful tool for turning your machine learning models into inter
 - Test locally before deploying to the cloud.
 """
 
-from google.colab import drive
-drive.mount('/content/drive')
-
 import pandas as pd
 
 # Load the Kaggle survey data
@@ -275,8 +272,3 @@ loaded_model = pickle.load(open(filename, 'rb'))
 
 # (Optional) Confirm the model loads and scores the same
 print(f"Loaded model test R²: {loaded_model.score(X_test, y_test):.3f}")
-
-from google.colab import files
-
-# Download the saved Lasso model
-files.download('/content/lasso_salary_model.pkl')
