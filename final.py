@@ -1,6 +1,7 @@
 import streamlit as st
 import pickle
 import pandas as pd
+import numpy as np
 
 # ─── 0) PAGE CONFIG MUST BE FIRST ─────────────────────────────
 st.set_page_config(
