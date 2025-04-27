@@ -17,6 +17,28 @@ def load_model():
 
 model = load_model()
 
+feature_names = list(model.feature_names_in_)
+
+# 2) Build a “blank” input row
+input_df = pd.DataFrame(np.zeros((1, len(feature_names))), columns=feature_names)
+
+# 3) Fill in the numeric and binary features
+input_df.at[0, "Education"]    = education_mapping[education]
+input_df.at[0, "Years_Coding"] = years_coding
+input_df.at[0, "Codes_In_Java"]   = int(codes_java)
+input_df.at[0, "Codes_In_Python"] = int(codes_python)
+input_df.at[0, "Codes_In_SQL"]    = int(codes_sql)
+input_df.at[0, "Codes_In_GO"]     = int(codes_go)
+
+# 4) Turn on exactly the one country dummy
+col = f"Country_{country}"
+if col in input_df.columns:
+    input_df.at[0, col] = 1
+
+# 5) Now predict with the perfectly aligned DataFrame
+salary_est = model.predict(input_df)[0]
+st.success(f"Estimated Annual Salary: **${salary_est:,.2f}**")
+
 # ─── 2) APP HEADER ────────────────────────────────────────────
 st.title("💼 Data Scientist Salary Predictor")
 st.subheader("📈 Estimate your annual salary based on your profile")
