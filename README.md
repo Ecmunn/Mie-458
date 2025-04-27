@@ -1,1 +1,1 @@
-This App was built as a part of a college project.  It trained 3 models ( linear reg, Lasso, and decision tree) and selected the best of the 3 to predict salaries.  
+This app was built as part of a college project to predict salaries using machine learning models. I trained three different models — Linear Regression, Lasso Regression, and Decision Tree — and selected the best-performing one based on evaluation metrics. The variables I used for prediction were chosen because they made the most logical sense in determining salary outcomes.
