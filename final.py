@@ -74,10 +74,14 @@ if col in input_df.columns:
     input_df.at[0, col] = 1
 
 # ─── 5) PREDICTION ───────────────────────────────────────────
-st.markdown("---")
-st.subheader("💵 Your Predicted Salary")
-
 if st.button("Predict Salary"):
+    # Make sure input_df has exactly the same cols (and order) as the model expects
+    input_df = input_df.reindex(
+        columns=model.feature_names_in_,
+        fill_value=0
+    )
+
+    # Now predict
     salary_est = model.predict(input_df)[0]
     st.success(f"Estimated Annual Salary: **${salary_est:,.2f}**")
 
