@@ -48,7 +48,9 @@ Streamlit is a powerful tool for turning your machine learning models into inter
 import pandas as pd
 
 # Load the Kaggle survey data
-df = pd.read_csv('/content/kaggle_survey_2022_responses.csv', skiprows=1)
+df = pd.read_csv('data/kaggle_survey_2022_responses.csv',
+                 skiprows=1,
+                 low_memory=False)
 df.columns = df.columns.str.strip()
 
 # Select the right columns
