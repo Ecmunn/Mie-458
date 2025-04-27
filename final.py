@@ -50,7 +50,7 @@ codes_python = st.checkbox("I code in Python")
 codes_sql    = st.checkbox("I code in SQL")
 codes_go     = st.checkbox("I code in Go")
 
-# ─── 4) BUILD INPUT DATAFRAME ────────────────────────────────
+# BUILD INPUT DATAFRAME 
 # Get the exact feature list the model expects
 feature_names = list(model.feature_names_in_)
 
