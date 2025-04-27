@@ -3,14 +3,14 @@ import pickle
 import pandas as pd
 import numpy as np
 
-# ─── 0) PAGE CONFIG ─────────────────────────────────────────
+# PAGE 
 st.set_page_config(
     page_title="Salary Predictor",
     page_icon="💼",
     layout="centered"
 )
 
-# ─── 1) LOAD MODEL ───────────────────────────────────────────
+# LOAD MODEL
 @st.cache_resource
 def load_model():
     with open("Final Pickle.pkl", "rb") as f:
@@ -18,11 +18,11 @@ def load_model():
 
 model = load_model()
 
-# ─── 2) APP HEADER ───────────────────────────────────────────
+# APP HEADER
 st.title("💼 Data Scientist Salary Predictor")
 st.subheader("📈 Estimate your annual salary based on your profile")
 
-# ─── 3) USER INPUTS ──────────────────────────────────────────
+# USER INPUTS 
 education_mapping = {
     "High School or Some College": 0,
     "Bachelor’s Degree":          1,
@@ -73,7 +73,7 @@ col = f"Country_{country}"
 if col in input_df.columns:
     input_df.at[0, col] = 1
 
-# ─── 5) PREDICTION ───────────────────────────────────────────
+# PREDICTION
 if st.button("Predict Salary"):
     # Make sure input_df has exactly the same cols (and order) as the model expects
     input_df = input_df.reindex(
